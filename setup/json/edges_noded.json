@@ -1,0 +1,96 @@
+{
+	"featureType": {
+		"name": "edges_noded",
+		"nativeName": "edges_noded",
+		"namespace": {
+			"name": "routing",
+			"href": "http:\/\/localhost:8600\/geoserver\/rest\/namespaces\/routing.json"
+		},
+		"title": "edges_noded",
+		"keywords": {
+			"string": ["features", "edges_noded"]
+		},
+		"nativeCRS": "GEOGCS[\"WGS 84\", \n  DATUM[\"World Geodetic System 1984\", \n    SPHEROID[\"WGS 84\", 6378137.0, 298.257223563, AUTHORITY[\"EPSG\",\"7030\"]], \n    AUTHORITY[\"EPSG\",\"6326\"]], \n  PRIMEM[\"Greenwich\", 0.0, AUTHORITY[\"EPSG\",\"8901\"]], \n  UNIT[\"degree\", 0.017453292519943295], \n  AXIS[\"Geodetic longitude\", EAST], \n  AXIS[\"Geodetic latitude\", NORTH], \n  AUTHORITY[\"EPSG\",\"4326\"]]",
+		"srs": "EPSG:4326",
+		"nativeBoundingBox": {
+			"minx": -180,
+			"maxx": 180,
+			"miny": -90,
+			"maxy": 90,
+			"crs": "EPSG:4326"
+		},
+		"latLonBoundingBox": {
+			"minx": -180,
+			"maxx": 180,
+			"miny": -90,
+			"maxy": 90,
+			"crs": "EPSG:4326"
+		},
+		"projectionPolicy": "FORCE_DECLARED",
+		"enabled": true,
+		"store": {
+			"@class": "dataStore",
+			"name": "routing:routedb",
+			"href": "http:\/\/localhost:8600\/geoserver\/rest\/workspaces\/routing\/datastores\/routedb.json"
+		},
+		"serviceConfiguration": false,
+		"maxFeatures": 0,
+		"numDecimals": 0,
+		"padWithZeros": false,
+		"forcedDecimal": false,
+		"overridingServiceSRS": false,
+		"skipNumberMatched": false,
+		"circularArcPresent": false,
+		"attributes": {
+			"attribute": [{
+				"name": "old_id",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.Integer"
+			}, {
+				"name": "sub_id",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.Integer"
+			}, {
+				"name": "source",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.Long"
+			}, {
+				"name": "target",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.Long"
+			}, {
+				"name": "the_geom",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "org.locationtech.jts.geom.LineString"
+			}, {
+				"name": "name",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.String"
+			}, {
+				"name": "type",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.String"
+			}, {
+				"name": "distance",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.Double"
+			}]
+		}
+	}
+}

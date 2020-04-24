@@ -1,0 +1,97 @@
+{
+	"dataStore": {
+		"name": "routedb",
+		"type": "PostGIS",
+		"enabled": true,
+		"workspace": {
+			"name": "routing",
+			"href": "http:\/\/192.168.0.12:8600\/geoserver\/rest\/workspaces\/routing.json"
+		},
+		"connectionParameters": {
+			"entry": [{
+				"@key": "schema",
+				"$": "public"
+			}, {
+				"@key": "Evictor run periodicity",
+				"$": "300"
+			}, {
+				"@key": "Max open prepared statements",
+				"$": "50"
+			}, {
+				"@key": "encode functions",
+				"$": "true"
+			}, {
+				"@key": "Batch insert size",
+				"$": "1"
+			}, {
+				"@key": "preparedStatements",
+				"$": "false"
+			}, {
+				"@key": "database",
+				"$": "routedb"
+			}, {
+				"@key": "host",
+				"$": "192.168.0.12"
+			}, {
+				"@key": "Loose bbox",
+				"$": "true"
+			}, {
+				"@key": "SSL mode",
+				"$": "DISABLE"
+			}, {
+				"@key": "Estimated extends",
+				"$": "true"
+			}, {
+				"@key": "fetch size",
+				"$": "1000"
+			}, {
+				"@key": "Expose primary keys",
+				"$": "false"
+			}, {
+				"@key": "validate connections",
+				"$": "true"
+			}, {
+				"@key": "Support on the fly geometry simplification",
+				"$": "true"
+			}, {
+				"@key": "Connection timeout",
+				"$": "20"
+			}, {
+				"@key": "create database",
+				"$": "false"
+			}, {
+				"@key": "port",
+				"$": "25434"
+			}, {
+				"@key": "passwd",
+				"$": "crypt1:tiA0TbBR3fAcf4aulADAWVW9ZV3TN1il"
+			}, {
+				"@key": "min connections",
+				"$": "1"
+			}, {
+				"@key": "dbtype",
+				"$": "postgis"
+			}, {
+				"@key": "namespace",
+				"$": "http:\/\/routing"
+			}, {
+				"@key": "max connections",
+				"$": "10"
+			}, {
+				"@key": "Evictor tests per run",
+				"$": "3"
+			}, {
+				"@key": "Test while idle",
+				"$": "true"
+			}, {
+				"@key": "user",
+				"$": "geoadm"
+			}, {
+				"@key": "Max connection idle time",
+				"$": "300"
+			}]
+		},
+		"_default": false,
+		"featureTypes": "http:\/\/192.168.0.12:8600\/geoserver\/rest\/workspaces\/routing\/datastores\/routedb\/featuretypes.json"
+	}
+}

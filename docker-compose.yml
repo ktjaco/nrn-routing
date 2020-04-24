@@ -1,0 +1,35 @@
+version: '2.1'
+volumes:
+  geodb:
+  geoserver-db:
+  db:
+services:
+  db:
+    image: kartoza/postgis:11.0-2.5
+    volumes:
+      - geodb:/var/lib/postgresql
+    ports:
+      - "25434:5432"
+    env_file:
+      - envs/db.env
+    restart: on-failure
+    healthcheck:
+      test: "exit 0"
+    command: touch /tmp/temp.txt
+  geoserver:
+    image: kartoza/geoserver:2.15.5
+    volumes:
+      - geoserver-db:/opt/geoserver/data_dir
+    ports:
+      - "8600:8080"
+    restart: on-failure
+    env_file:
+      - envs/geoserver.env
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: curl --fail -s http://localhost:8080/ || exit 1
+      interval: 1m30s
+      timeout: 10s
+      retries: 3

@@ -1,0 +1,89 @@
+{
+	"featureType": {
+		"name": "nearest_vertex",
+		"nativeName": "nearest_vertex",
+		"namespace": {
+			"name": "routing",
+			"href": "http:\/\/localhost:8600\/geoserver\/rest\/namespaces\/routing.json"
+		},
+		"title": "nearest_vertex",
+		"keywords": {
+			"string": ["nearest_vertex", "features"]
+		},
+		"srs": "EPSG:4326",
+		"nativeBoundingBox": {
+			"minx": -180,
+			"maxx": 180,
+			"miny": -90,
+			"maxy": 90,
+			"crs": "EPSG:4326"
+		},
+		"latLonBoundingBox": {
+			"minx": -180,
+			"maxx": 180,
+			"miny": -90,
+			"maxy": 90,
+			"crs": "EPSG:4326"
+		},
+		"projectionPolicy": "FORCE_DECLARED",
+		"enabled": true,
+		"metadata": {
+			"entry": {
+				"@key": "JDBC_VIRTUAL_TABLE",
+				"virtualTable": {
+					"name": "nearest_vertex",
+					"sql": "SELECT\r\n  v.id,\r\n  v.the_geom,\r\n  string_agg(distinct(e.name),',') AS name\r\nFROM\r\n  edges_noded_vertices_pgr AS v,\r\n  edges_noded AS e\r\nWHERE\r\n  v.id = (SELECT\r\n            id\r\n          FROM edges_noded_vertices_pgr\r\n          ORDER BY the_geom <-> ST_SetSRID(ST_MakePoint(%x%, %y%), 4326) LIMIT 1)\r\n  AND (e.source = v.id OR e.target = v.id)\r\nGROUP BY v.id, v.the_geom\n",
+					"escapeSql": false,
+					"geometry": {
+						"name": "the_geom",
+						"type": "Point",
+						"srid": -1
+					},
+					"parameter": [{
+						"name": "x",
+						"defaultValue": 36.02,
+						"regexpValidator": "^[\\d\\.\\+-eE]+$"
+					}, {
+						"name": "y",
+						"defaultValue": -2.03,
+						"regexpValidator": "^[\\d\\.\\+-eE]+$"
+					}]
+				}
+			}
+		},
+		"store": {
+			"@class": "dataStore",
+			"name": "routing:routedb",
+			"href": "http:\/\/localhost:8600\/geoserver\/rest\/workspaces\/routing\/datastores\/routedb.json"
+		},
+		"serviceConfiguration": false,
+		"maxFeatures": 0,
+		"numDecimals": 0,
+		"padWithZeros": false,
+		"forcedDecimal": false,
+		"overridingServiceSRS": false,
+		"skipNumberMatched": false,
+		"circularArcPresent": false,
+		"attributes": {
+			"attribute": [{
+				"name": "id",
+				"minOccurs": 1,
+				"maxOccurs": 1,
+				"nillable": false,
+				"binding": "java.lang.Long"
+			}, {
+				"name": "the_geom",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "org.locationtech.jts.geom.Geometry"
+			}, {
+				"name": "name",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.String"
+			}]
+		}
+	}
+}

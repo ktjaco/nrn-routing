@@ -1,0 +1,107 @@
+{
+	"featureType": {
+		"name": "shortest_path",
+		"nativeName": "shortest_path",
+		"namespace": {
+			"name": "routing",
+			"href": "http:\/\/localhost:8600\/geoserver\/rest\/namespaces\/routing.json"
+		},
+		"title": "shortest_path",
+		"keywords": {
+			"string": ["features", "shortest_path"]
+		},
+		"srs": "EPSG:4326",
+		"nativeBoundingBox": {
+			"minx": -180,
+			"maxx": 180,
+			"miny": -90,
+			"maxy": 90,
+			"crs": "EPSG:4326"
+		},
+		"latLonBoundingBox": {
+			"minx": -180,
+			"maxx": 180,
+			"miny": -90,
+			"maxy": 90,
+			"crs": "EPSG:4326"
+		},
+		"projectionPolicy": "FORCE_DECLARED",
+		"enabled": true,
+		"metadata": {
+			"entry": {
+				"@key": "JDBC_VIRTUAL_TABLE",
+				"virtualTable": {
+					"name": "shortest_path",
+					"sql": "SELECT\r\n min(r.seq) AS seq,\r\n e.old_id AS id,\r\n e.name,\r\n e.type,\r\n sum(e.distance) AS distance,\r\nST_Collect(e.the_geom) AS geom \r\n FROM pgr_dijkstra('SELECT id,source,target,distance AS cost,rcost AS reverse_cost FROM edges_noded',%source%,%target%,true) AS r,edges_noded AS e \r\n WHERE r.edge=e.id GROUP BY e.old_id,e.name,e.type\n",
+					"escapeSql": false,
+					"geometry": {
+						"name": "geom",
+						"type": "Geometry",
+						"srid": -1
+					},
+					"parameter": [{
+						"name": "source",
+						"defaultValue": 1,
+						"regexpValidator": "^[\\d]+$"
+					}, {
+						"name": "target",
+						"defaultValue": 2,
+						"regexpValidator": "^[\\d]+$"
+					}]
+				}
+			}
+		},
+		"store": {
+			"@class": "dataStore",
+			"name": "routing:routedb",
+			"href": "http:\/\/localhost:8600\/geoserver\/rest\/workspaces\/routing\/datastores\/routedb.json"
+		},
+		"serviceConfiguration": false,
+		"maxFeatures": 0,
+		"numDecimals": 0,
+		"padWithZeros": false,
+		"forcedDecimal": false,
+		"overridingServiceSRS": false,
+		"skipNumberMatched": false,
+		"circularArcPresent": false,
+		"attributes": {
+			"attribute": [{
+				"name": "seq",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.Integer"
+			}, {
+				"name": "id",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.Integer"
+			}, {
+				"name": "name",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.String"
+			}, {
+				"name": "type",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.String"
+			}, {
+				"name": "distance",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "java.lang.Double"
+			}, {
+				"name": "geom",
+				"minOccurs": 0,
+				"maxOccurs": 1,
+				"nillable": true,
+				"binding": "org.locationtech.jts.geom.Geometry"
+			}]
+		}
+	}
+}
