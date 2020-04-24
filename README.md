@@ -2,6 +2,8 @@
 
 A proof-of-concept that uses the National Road Network to build a point-to-point routing application using Dijkstra's Shortest Path Algorithm on top of GeoServer and PostgreSQL/PostGIS Docker containers.
 
+![demo image](assets/images/demo.gif)
+
 ## Requirements
 * Geospatial Data Abstraction Library (GDAL) 3 - `ogr2ogr`
 * Docker and Docker-Compose
