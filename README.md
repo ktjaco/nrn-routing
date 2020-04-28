@@ -17,7 +17,10 @@ A proof-of-concept that uses the National Road Network to build a point-to-point
 
 ### 2. Download the NRN road network, build the network costs and interact with the GeoServer RESTful API.
 
-`$ ./build.sh`
+`$ ./build.sh [ab,bc,mb,nb,nl,ns,on,pe,qc,sk,nt,nu,yk]`
+
+Example:
+`$ ./build nb`
 
 ### 3. View the web map using Python HTTPServer.
 

@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS pgrouting;
+
 ALTER TABLE edges ADD source INT4;
 
 ALTER TABLE edges ADD target INT4;

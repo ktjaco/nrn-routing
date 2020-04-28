@@ -6,7 +6,7 @@ var target = null;
 
 // initialize our map
 var map = L.map("map", {
-	center: [46.24320196, -63.13481060],
+	center: [60.72420599, -135.06672683],
 	zoom: 15 //set the zoom level
 });
 
@@ -39,7 +39,7 @@ var targetIcon = L.icon({
 })
 
 // draggable marker for starting point. Note the marker is initialized with an initial starting position
-var sourceMarker = L.marker([46.24509122, -63.14270243], {
+var sourceMarker = L.marker([60.72431293, -135.05843948], {
 	icon: sourceIcon,
 	draggable: true
 })
@@ -51,7 +51,7 @@ var sourceMarker = L.marker([46.24509122, -63.14270243], {
 	.addTo(map);
 
 // draggbale marker for destination point.Note the marker is initialized with an initial destination positon
-var targetMarker = L.marker([46.23690394, -63.13068258], {
+var targetMarker = L.marker([60.71896625, -135.05467007], {
 	icon: targetIcon,
 	draggable: true
 })
